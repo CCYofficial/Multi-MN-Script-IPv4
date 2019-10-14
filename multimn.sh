@@ -434,9 +434,6 @@ do
   echo "logtimestamps=1" >> cryptocurrency.conf_TEMP
   echo "maxconnections=$MAXC" >> cryptocurrency.conf_TEMP
   echo "masternode=1" >> cryptocurrency.conf_TEMP
-  echo "dbcache=20" >> cryptocurrency.conf_TEMP
-  echo "maxorphantx=5" >> cryptocurrency.conf_TEMP
-  echo "maxmempool=100" >> cryptocurrency.conf_TEMP
   echo "bind=$IP4:$PORT" >> cryptocurrency.conf_TEMP
   echo "externalip=$IP4" >> cryptocurrency.conf_TEMP
   echo "masternodeaddr=$IP4:$PORT" >> cryptocurrency.conf_TEMP
@@ -466,8 +463,6 @@ done
 
 fi
 
-echo ""
-echo -e "${RED}Please do not set maxconnections lower than 32 or your node may not receive rewards as often.${NC}"
 echo ""
 echo "Commands:"
 echo "${ALIAS}_start"
