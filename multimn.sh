@@ -334,7 +334,7 @@ echo -e "Cryptocurrency nodes currently installed: ${GREEN}${IP4COUNT}${NC}, Cry
 echo ""
 
 
-if [ $IP4COUNT != "20" ] 
+if [ $IP4COUNT = "0" ] 
 then
 
 echo -e "${RED}First node must be ipv4.${NC}"
@@ -392,7 +392,7 @@ RPCPORT=$(($RPCPORTT+$COUNTER))
 	configure_systemd
 fi
 
-if [ $IP4COUNT = "0" ] 
+if [ $IP4COUNT != "0" ] 
 then
 if [ -z $1 ]; then
 echo "How many ipv4 nodes do you want to install on this server?"
