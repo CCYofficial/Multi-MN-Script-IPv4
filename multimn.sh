@@ -4,7 +4,6 @@ if [[ $EUID -ne 0 ]]; then
    echo -e "${RED}$0 must be run as root.${NC}"
    exit 1
 fi
-OS_version=$(cat /etc/lsb-release | grep -c bionic)
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
@@ -20,7 +19,11 @@ fi
 
 
 ## Constants
+CURRENTPROTOCOL=72105
+version="v1.1.0.0"
+link="https://github.com/CCYofficial/CCY/releases/download/1.1.0.0/cryptocurrency.ubuntu16.04.zip"
 
+OS_version=$(cat /etc/lsb-release | grep -c bionic)
 IP4COUNT=$(find /root/.cryptocurrency_* -maxdepth 0 -type d | wc -l)
 IP6COUNT=$(crontab -l -u root | wc -l)
 DELETED="$(cat /root/bin/deleted | wc -l)"
@@ -102,7 +105,7 @@ sleep 1
 mnalias=$(find /root/.cryptocurrency* -maxdepth 0 -type d | cut -c22- | head -n 1)
 PROTOCOL=$(cryptocurrency-cli -datadir=/root/.cryptocurrency${mnalias} getinfo | grep "protocolversion" | sed 's/[^0-9]*//g')
 
-if [ $PROTOCOL != 72105 ]
+if [ $PROTOCOL != CURRENTPROTOCOL ]
 then
 sed -i 's/22123/5535/g' /root/.cryptocurrency*/cryptocurrency.conf
 rm .cryptocurrency*/blocks -rf
@@ -293,6 +296,7 @@ then
   echo -e "Installing ${GREEN}Cryptocurrency dependencies${NC}. Please wait."
   sleep 2
 sudo add-apt-repository ppa:bitcoin/bitcoin -y && sudo apt-get update && sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
+touch /root/bin/dep
 fi
 if [ ! -f "/usr/local/bin/cryptocurrencyd" ]
 then
