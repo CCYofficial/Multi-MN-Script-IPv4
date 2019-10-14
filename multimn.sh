@@ -59,7 +59,7 @@ fi
 
 ## Constants
 
-IP4COUNT=1
+IP4COUNT=$(find /root/.cryptocurrency_* -maxdepth 0 -type d | wc -l)
 IP6COUNT=$(crontab -l -u root | wc -l)
 DELETED="$(cat /root/bin/deleted | wc -l)"
 ALIASES="$(find /root/.cryptocurrency_* -maxdepth 0 -type d | cut -c22-)"
@@ -424,7 +424,6 @@ do
   fi
   
   CONF_DIR=/root/.cryptocurrency_$ALIAS
-  /sbin/ip -6 addr add ${gateway}$COUNTER$MASK dev $face
   mkdir /root/.cryptocurrency_$ALIAS
   
   unzip cryptocurrency-blockchain.zip -d ~/.cryptocurrency_$ALIAS >/dev/null 2>&1
@@ -439,7 +438,7 @@ do
   echo "rpcuser=user"`shuf -i 100000-10000000 -n 1` >> cryptocurrency.conf_TEMP
   echo "rpcpassword=pass"`shuf -i 100000-10000000 -n 1` >> cryptocurrency.conf_TEMP
   echo "rpcallowip=127.0.0.1" >> cryptocurrency.conf_TEMP
-  echo "rpcport=$RPCPORT" >> cryptocurrency.conf_TEMP
+  echo "rpcport="`shuf -i 6000-50000 -n 1` >> cryptocurrency.conf_TEMP
   echo "listen=0" >> cryptocurrency.conf_TEMP
   echo "server=1" >> cryptocurrency.conf_TEMP
   echo "daemon=1" >> cryptocurrency.conf_TEMP
