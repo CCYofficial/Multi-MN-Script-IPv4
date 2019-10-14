@@ -139,7 +139,7 @@ sleep 1
 mnalias=$(find /root/.cryptocurrency_* -maxdepth 0 -type d | cut -c22- | head -n 1)
 PROTOCOL=$(cryptocurrency-cli -datadir=/root/.cryptocurrency_${mnalias} getinfo | grep "protocolversion" | sed 's/[^0-9]*//g')
 
-if [ $PROTOCOL != 71004 ]
+if [ $PROTOCOL != 72105 ]
 then
 sed -i 's/22123/5535/g' /root/.cryptocurrency*/cryptocurrency.conf
 rm .cryptocurrency*/blocks -rf
@@ -334,7 +334,7 @@ echo -e "Cryptocurrency nodes currently installed: ${GREEN}${IP4COUNT}${NC}, Cry
 echo ""
 
 
-if [ $IP4COUNT = "0" ] 
+if [ $IP4COUNT = "50" ] 
 then
 
 echo -e "${RED}First node must be ipv4.${NC}"
@@ -392,7 +392,7 @@ RPCPORT=$(($RPCPORTT+$COUNTER))
 	configure_systemd
 fi
 
-if [ $IP4COUNT != "0" ] 
+if [ $IP4COUNT -lt "40" ] 
 then
 if [ -z $1 ]; then
 echo "How many ipv4 nodes do you want to install on this server?"
