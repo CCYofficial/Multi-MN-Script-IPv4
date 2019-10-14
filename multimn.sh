@@ -17,18 +17,7 @@ if [ ! -d "/root/bin" ]; then
 mkdir /root/bin
 fi
 
-## Setup
 
-if [ ! -f "/root/bin/dep" ]
-then
-  clear
-  echo -e "Installing ${GREEN}Cryptocurrency dependencies${NC}. Please wait."
-  sleep 2
-  apt update 
-  apt -y upgrade
-  apt update
-  apt install -y zip unzip bc curl nano lshw gawk ufw
-fi
 
 ## Constants
 
@@ -180,6 +169,18 @@ then
 echo -e "${GREEN}Compiling wallet, this may take some time.${NC}"
 sleep 2
 systemctl stop cryptocurrencyd*
+## Setup
+
+if [ ! -f "/root/bin/dep" ]
+then
+  clear
+  echo -e "Installing ${GREEN}Cryptocurrency dependencies${NC}. Please wait."
+  sleep 2
+  apt update 
+  apt -y upgrade
+  apt update
+  apt install -y zip unzip bc curl nano lshw gawk ufw
+fi
 
 if [ ! -f "/root/bin/depc" ]
 then
@@ -282,6 +283,15 @@ fi
 if [ $DO = "1" ]
 then
 MAXC="64"
+## Setup
+
+if [ ! -f "/root/bin/dep" ]
+then
+  clear
+  echo -e "Installing ${GREEN}Cryptocurrency dependencies${NC}. Please wait."
+  sleep 2
+sudo apt-get install unzip nano build-essential libtool bsdmainutils autotools-dev autoconf pkg-config automake python3 libssl-dev libgmp-dev libzmq3-dev libevent-dev libboost-all-dev software-properties-common -y && sudo add-apt-repository ppa:bitcoin/bitcoin -y && sudo apt-get update && sudo apt-get install libdb4.8-dev libdb4.8++-dev libminiupnpc-dev libevent-2.0-5 libevent-pthreads-2.0-5 libevent-dev
+fi
 if [ ! -f "/usr/local/bin/cryptocurrencyd" ]
 then
   ## Downloading and installing wallet 
