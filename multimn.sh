@@ -181,6 +181,7 @@ then
   apt -y upgrade
   apt update
   apt install -y zip unzip bc curl nano lshw gawk ufw
+  touch /root/bin/dep
 fi
 
 if [ ! -f "/root/bin/depc" ]
