@@ -28,33 +28,6 @@ then
   apt -y upgrade
   apt update
   apt install -y zip unzip bc curl nano lshw gawk ufw
-  
-  ## Checking for Swap
-  
-  if [ ! -f /var/swap.img ]
-  then
-  echo -e "${RED}Creating swap. This may take a while.${NC}"
-  dd if=/dev/zero of=/var/swap.img bs=2048 count=1M
-  chmod 600 /var/swap.img
-  mkswap /var/swap.img 
-  swapon /var/swap.img 
-  free -m
-  echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
-  fi
-  
-  ufw allow ssh/tcp
-  ufw limit ssh/tcp
-  ufw logging on
-  echo "y" | ufw enable 
-  ufw allow 5535
-  echo 'export PATH=~/bin:$PATH' > ~/.bash_aliases
-  echo ""
-  cd
-  sysctl vm.swappiness=30
-  sysctl vm.vfs_cache_pressure=200
-  echo 'vm.swappiness=30' | tee -a /etc/sysctl.conf
-  echo 'vm.vfs_cache_pressure=200' | tee -a /etc/sysctl.conf
-  touch /root/bin/dep
 fi
 
 ## Constants
