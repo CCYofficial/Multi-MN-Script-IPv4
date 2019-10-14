@@ -59,7 +59,7 @@ fi
 
 ## Constants
 
-IP4COUNT=$(find /root/.cryptocurrency_* -maxdepth 0 -type d | wc -l)
+IP4COUNT=1
 IP6COUNT=$(crontab -l -u root | wc -l)
 DELETED="$(cat /root/bin/deleted | wc -l)"
 ALIASES="$(find /root/.cryptocurrency_* -maxdepth 0 -type d | cut -c22-)"
