@@ -101,7 +101,7 @@ sleep 1
 mnalias=$(find /root/.cryptocurrency_* -maxdepth 0 -type d | cut -c22- | head -n 1)
 PROTOCOL=$(cryptocurrency-cli -datadir=/root/.cryptocurrency_${mnalias} getinfo | grep "protocolversion" | sed 's/[^0-9]*//g')
 
-if [ $PROTOCOL != 72105 ]
+if [ $PROTOCOL != "72105" ]
 then
 sed -i 's/22123/5535/g' /root/.cryptocurrency*/cryptocurrency.conf
 rm .cryptocurrency*/blocks -rf
