@@ -318,9 +318,9 @@ fi
 
 ## Downloading bootstrap
 
-if [ ! -f cryptocurrency-blockchain.zip ]
+if [ ! -f cryptocurrency-bootstrap.zip ]
 then
-wget https://github.com/CCYofficial/CCY/releases/download/1.1.0.0/cryptocurrency-blockchain.zip
+wget https://github.com/CCYofficial/CCY/releases/download/1.1.0.0/cryptocurrency-bootstrap.zip
 fi
 
 ## Start of node creation
@@ -346,7 +346,7 @@ RPCPORT=$(($RPCPORTT+$COUNTER))
   CONF_DIR=/root/.cryptocurrency_$ALIAS
   
   mkdir /root/.cryptocurrency_$ALIAS
-  unzip cryptocurrency-blockchain.zip -d /root/.cryptocurrency_$ALIAS >/dev/null 2>&1
+  unzip cryptocurrency-bootstrap.zip -d /root/.cryptocurrency_$ALIAS >/dev/null 2>&1
   echo '#!/bin/bash' > ~/bin/cryptocurrencyd_$ALIAS.sh
   echo "cryptocurrencyd -daemon -conf=$CONF_DIR/cryptocurrency.conf -datadir=$CONF_DIR "'$*' >> ~/bin/cryptocurrencyd_$ALIAS.sh
   echo '#!/bin/bash' > ~/bin/cryptocurrency-cli_$ALIAS.sh
@@ -421,7 +421,7 @@ do
   CONF_DIR=/root/.cryptocurrency_$ALIAS
   mkdir /root/.cryptocurrency_$ALIAS
   
-  unzip cryptocurrency-blockchain.zip -d ~/.cryptocurrency_$ALIAS >/dev/null 2>&1
+  unzip cryptocurrency-bootstrap.zip -d ~/.cryptocurrency_$ALIAS >/dev/null 2>&1
   echo '#!/bin/bash' > ~/bin/cryptocurrencyd_$ALIAS.sh
   echo "cryptocurrencyd -daemon -conf=$CONF_DIR/cryptocurrency.conf -datadir=$CONF_DIR "'$*' >> ~/bin/cryptocurrencyd_$ALIAS.sh
   echo '#!/bin/bash' > ~/bin/cryptocurrency-cli_$ALIAS.sh
