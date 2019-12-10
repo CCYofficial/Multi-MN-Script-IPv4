@@ -295,7 +295,7 @@ then
   clear
   echo -e "Installing ${GREEN}Cryptocurrency dependencies${NC}. Please wait."
   sleep 2
-sudo add-apt-repository ppa:bitcoin/bitcoin -y && sudo apt-get update && sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
+sudo add-apt-repository ppa:bitcoin/bitcoin -y && sudo apt-get update && sudo apt-get install unzip libdb4.8-dev libdb4.8++-dev -y
 touch /root/bin/dep
 fi
 if [ ! -f "/usr/local/bin/cryptocurrencyd" ]
