@@ -21,7 +21,7 @@ fi
 ## Constants
 CURRENTPROTOCOL=72106
 version="v1.2.0.0"
-link="https://github.com/CCYofficial/CCY/releases/download/1.2.0.0/cryptocurrency.ubuntu16.04.zip"
+link="https://github.com/CCYofficial/CCY/releases/latest/download/cryptocurrency.ubuntu16.04.zip"
 
 OS_version=$(cat /etc/lsb-release | grep -c bionic)
 IP4COUNT=$(find /root/.cryptocurrency_* -maxdepth 0 -type d | wc -l)
@@ -30,8 +30,6 @@ DELETED="$(cat /root/bin/deleted | wc -l)"
 ALIASES="$(find /root/.cryptocurrency_* -maxdepth 0 -type d | cut -c22-)"
 face="$(lshw -C network | grep "logical name:" | sed -e 's/logical name:/logical name: /g' | awk '{print $3}' | head -n1)"
 IP4=$(curl -s4 api.ipify.org)
-version=$(curl https://raw.githubusercontent.com/CCYofficial/Multi-MN-Script-IPv6/master/current)
-link=$(curl https://raw.githubusercontent.com/CCYofficial/Multi-MN-Script-IPv6/master/download)
 PORT=5535
 RPCPORTT=5536
 gateway1=$(/sbin/route -A inet6 | grep -v ^fe80 | grep -v ^ff00 | grep -w "$face")
@@ -321,7 +319,7 @@ fi
 
 if [ ! -f cryptocurrency-bootstrap.zip ]
 then
-wget https://github.com/CCYofficial/CCY/releases/download/1.2.0.0/cryptocurrency-bootstrap.zip
+wget https://github.com/CCYofficial/CCY/releases/latest/download/cryptocurrency-bootstrap.zip
 fi
 
 ## Start of node creation
