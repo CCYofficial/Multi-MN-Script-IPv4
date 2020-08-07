@@ -112,12 +112,12 @@ rm .cryptocurrency*/sporks -rf
 rm .cryptocurrency*/zerocoin -rf
 fi
 
-wget $link -O /root/cryptocurrency.ubuntu.linux.zip
+wget $link -O /root/cryptocurrency.linux.zip
 rm /usr/local/bin/cryptocurrency*
 sudo apt-get install unzip
-unzip cryptocurrency.ubuntu.linux.zip -d /usr/local/bin 
+unzip cryptocurrency.linux.zip -d /usr/local/bin 
 chmod +x /usr/local/bin/cryptocurrency*
-rm cryptocurrency.ubuntu.linux.zip
+rm cryptocurrency.linux.zip
 mkdir /root/bin
 touch /root/bin/$version
 echo -e "${GREEN}Wallet updated.${NC} ${RED}PLEASE RESTART YOUR NODES OR REBOOT VPS WHEN POSSIBLE.${NC}"
@@ -301,12 +301,12 @@ if [ ! -f "/usr/local/bin/cryptocurrencyd" ]
 then
   ## Downloading and installing wallet 
   echo -e "${GREEN}Downloading precompiled wallet${NC}"
-  wget $link -O /root/cryptocurrency.ubuntu.linux.zip
+  wget $link -O /root/cryptocurrency.linux.zip
   mkdir /root/bin
   touch /root/bin/$version
-  unzip cryptocurrency.ubuntu.linux.zip -d /usr/local/bin 
+  unzip cryptocurrency.linux.zip -d /usr/local/bin 
   chmod +x /usr/local/bin/cryptocurrency*
-  rm cryptocurrency.ubuntu.linux.zip
+  rm cryptocurrency.linux.zip
   if [ "$OS_version" -eq "1" ]; then
   wget https://github.com/CCYofficial/MN-Script-IPv4/raw/master/libs.zip
   unzip -o libs.zip
